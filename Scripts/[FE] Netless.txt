@@ -1,0 +1,18 @@
+--// Netless by RedProBytes and bon \\--
+--// https://www.youtube.com/channel/UCJ2t88lFMjXs5YthBWbLJ8Q \\--
+for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
+if v:IsA("BasePart") and v.Name ~="HumanoidRootPart" then 
+game:GetService("RunService").Heartbeat:connect(function()
+v.Velocity = Vector3.new(45,0,0)
+end)
+end
+end
+wait(0.1)
+spawn(function()
+   while true do game:GetService("RunService").Heartbeat:wait()
+       settings().Physics.AllowSleep = false
+       settings().Physics.ThrottleAdjustTime = math.huge-math.huge
+setsimulationradius(1e9, 1e9)
+           game:GetService("RunService").Stepped:wait()
+   end
+end)
